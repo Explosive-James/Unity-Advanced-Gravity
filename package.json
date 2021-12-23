@@ -1,0 +1,14 @@
+{
+  "name": "explosivejames.advancedgravity",
+  "version": "1.0.0",
+  "displayName": "Advanced Gravity",
+  "description": "Includes a collection of gravity fields that apply different shaped gravities to rigidbodies.",
+  "keywords": [
+	"advanced",
+	"gravity"
+  ],
+  "author": {
+		"name": "Explosive James",
+		"email": "theexplosivejames@gmail.com"
+  }
+}
