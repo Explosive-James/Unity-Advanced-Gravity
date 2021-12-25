@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace AdvancedGravity.UnityEditor.Settings
 {
@@ -26,6 +27,11 @@ namespace AdvancedGravity.UnityEditor.Settings
 
                         settings.ApplyModifiedProperties();
                         GravitySettings.SaveOrCreate();
+
+                        if (Application.isPlaying) {
+                            GravityBuilder builder = new GravityBuilder();
+                            builder.OnProcessScene(SceneManager.GetActiveScene(), null);
+                        }
                     }
                 },
             };
