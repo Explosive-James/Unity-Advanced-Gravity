@@ -19,7 +19,7 @@ To do this you must first have [Git](https://git-scm.com/) installed or other ve
 Download the zip under Code >> Downlod ZIP and extract the files, then inside of the Unity Editor open up the package manager under Window >> Package Manager and click on + >> Add package from disk and locate the **package.json** file extracted from the ZIP.  
 You should note that these files won't be moved into your project directory and deleting the files after importing them will break the package, you should put them in a safe directory before importing them into Unity.
 
-## Basic Usager Guide:
+## Basic User Guide:
 
 #### Adding a Gravity Feild to a Scene:  
 
