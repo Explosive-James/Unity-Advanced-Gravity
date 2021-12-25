@@ -21,9 +21,11 @@ namespace AdvancedGravity.Internal
         [SerializeField] protected int _priority;
         [SerializeField] protected float _strength = 9.81f;
 
-#if UNITY_EDITOR
         protected const float gizmosAlpha = 0.5f;
-        [SerializeField] protected int targetStrength = -1;
+#if UNITY_EDITOR
+#pragma warning disable 0414
+        [SerializeField] private int targetStrength = -1;
+#pragma warning restore 0414
 #endif
 
         [SerializeField] protected float _maximumRange = 5, _maximumFade = 1;
@@ -144,16 +146,18 @@ namespace AdvancedGravity.Internal
 
             return maximumFactor * minimumFactor;
         }
-#if UNITY_EDITOR
         protected Color GetGameObjectColour()
         {
+#if UNITY_EDITOR
             System.Random rng = new System.Random(gameObject.GetInstanceID());
             return Color.HSVToRGB((float)rng.NextDouble(), .7f, 1);
-        }
+#else
+            return Color.white;
 #endif
-        #endregion
+        }
+#endregion
 
-        #region Public Functions
+#region Public Functions
         /// <summary>
         /// Gets the current gravity being applied to a rigidbody.
         /// </summary>
@@ -209,9 +213,9 @@ namespace AdvancedGravity.Internal
 
             return globalGravity;
         }
-        #endregion
+#endregion
 
-        #region Private Functions
+#region Private Functions
         /// <summary>
         /// Finds the highest priority at the rigidbody's position.
         /// </summary>
@@ -233,6 +237,6 @@ namespace AdvancedGravity.Internal
 
             return currentPriority;
         }
-        #endregion
+#endregion
     }
 }
