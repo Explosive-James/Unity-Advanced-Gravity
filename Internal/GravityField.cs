@@ -24,7 +24,7 @@ namespace AdvancedGravity.Internal
         protected const float gizmosAlpha = 0.5f;
 #if UNITY_EDITOR
 #pragma warning disable 0414
-        [SerializeField] private int targetStrength = -1;
+        [SerializeField, HideInInspector] private int targetStrength = -1;
 #pragma warning restore 0414
 #endif
 
