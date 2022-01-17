@@ -14,7 +14,7 @@ namespace AdvancedGravity
         #endregion
 
         #region Unity Functions
-        private void Awake()
+        private void Start()
         {
             // Adding collider to invoke trigger events.
             CapsuleCollider collider = gameObject.AddComponent<CapsuleCollider>();

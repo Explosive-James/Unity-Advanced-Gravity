@@ -9,9 +9,9 @@ To create your own custom gravity field shapes, create a new script in Unity wit
 	
 	public class CustomGravity : GravityField
 
-For the gravity field to function correctly it requires two things, the first is a Unity collider as a trigger and the easiest way to do this is to use **gameObject.AddComponent** inside of **Awake** and change it's **isTrigger** property to **true**:
+For the gravity field to function correctly it requires two things, the first is a Unity collider as a trigger and the easiest way to do this is to use **gameObject.AddComponent** inside of **Start** and change it's **isTrigger** property to **true**:
 
-	private void Awake() {
+	private void Start() {
 		SphereCollider collider = gameObject.AddComponent<SphereCollider>();
 		
 		collider.isTrigger = true;

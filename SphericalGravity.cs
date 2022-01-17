@@ -6,7 +6,7 @@ namespace AdvancedGravity
     public sealed class SphericalGravity : GravityField
     {
         #region Unity Functions
-        private void Awake()
+        private void Start()
         {
             // Adding a sphere collider to invoke trigger events.
             SphereCollider collider = gameObject.AddComponent<SphereCollider>();

@@ -27,8 +27,8 @@ To add a new gravity field, you simply need to add a script to an gameObject, id
 
 #### Adjusting Preset Values:
 
-To adjust a value you go inside the project settings under Edit >> Project Settings >> Advanced Gravity and adjust the values from their, you can adjust both the names and the strengths of the values as well as adding new values.  
-The save file for these settings are located in the project settings folder of your project's main directory as a file called "GravitySettings.asset" and you can copy that over to other projects, deleting this file will restore the default settings as well as creating a new file under the same name.  
+To adjust a value you go inside the project settings under Edit >> Project Settings >> Advanced Gravity and adjust the values from there, you can adjust both the names and the strengths of the values as well as adding new values.  
+The save file for these settings are located in the project settings folder of your project's main directory as a file called "GravitySettings.asset", deleting this file will restore the default settings as well as creating a new file under the same name.  
 
 ## Creating a Custom Gravity Field:
 

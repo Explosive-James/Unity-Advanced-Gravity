@@ -77,11 +77,14 @@ namespace AdvancedGravity.Internal
         {
             // Caching rigidbody reference.
             Rigidbody targetRb = other.attachedRigidbody;
-            // If the rigidbody is null we cannot do anything.
-            if (targetRb == null) return;
+
+            // If the rigidbody is null or not using gravity we cannot do anything.
+            if (targetRb == null || !targetRb.useGravity) {
+                return;
+            }
 
             // Adding a rigidbody to the priorities.
-            if(targetRb != null && !globalPriorities.ContainsKey(targetRb)) {
+            if (targetRb != null && !globalPriorities.ContainsKey(targetRb)) {
                 globalPriorities.Add(targetRb, _priority);
             }
 
@@ -89,18 +92,18 @@ namespace AdvancedGravity.Internal
             int targetPriority = globalPriorities[targetRb];
 
             // Checking if gravity should be calculated.
-            if(_priority >= targetPriority) {
+            if (_priority >= targetPriority) {
 
                 // Calculating and applying gravity to the rigidbody.
                 Vector3 localGravity = GetFieldGravity(targetRb.position);
                 targetRb.velocity += localGravity * Time.fixedDeltaTime;
 
                 // Checking if the priority needs to be increased
-                if(_priority > targetPriority && localGravity != Vector3.zero) {
+                if (_priority > targetPriority && localGravity != Vector3.zero) {
                     globalPriorities[targetRb] = _priority;
                 }
                 // Checking if the priority needs to be recalculated.
-                else if(_priority == targetPriority && localGravity == Vector3.zero) {
+                else if (_priority == targetPriority && localGravity == Vector3.zero) {
                     globalPriorities[targetRb] = GetRigidbodyPriority(targetRb);
                 }
             }
@@ -111,7 +114,7 @@ namespace AdvancedGravity.Internal
             Rigidbody targetRb = other.attachedRigidbody;
 
             // Checking if priority should be recalculated.
-            if(targetRb != null && globalPriorities[targetRb] == _priority) {
+            if (targetRb != null && globalPriorities[targetRb] == _priority) {
 
                 // Recalculating rigidbody priority.
                 int targetPriority = GetRigidbodyPriority(targetRb);
@@ -155,17 +158,18 @@ namespace AdvancedGravity.Internal
             return Color.white;
 #endif
         }
-#endregion
+        #endregion
 
-#region Public Functions
+        #region Public Functions
         /// <summary>
-        /// Gets the current gravity being applied to a rigidbody.
+        /// Gets the current gravity being applied to a rigidbody. This considers the rigidbody's 'useGravity' property.
         /// </summary>
         /// <param name="rigidbody">Rigidbody to find the gravity of.</param>
         public static Vector3 GetGlobalGravity(Rigidbody rigidbody)
         {
-            // If the rigidbody has no priority it isn't in a gravity field.
-            if (!globalPriorities.ContainsKey(rigidbody)) {
+            // If the rigidbody has no priority it isn't in a gravity field,
+            // and if it doesn't use gravity it won't have any gravity applied.
+            if (!globalPriorities.ContainsKey(rigidbody) || !rigidbody.useGravity) {
                 return Vector3.zero;
             }
 
@@ -175,8 +179,8 @@ namespace AdvancedGravity.Internal
             Vector3 globalGravity = Vector3.zero;
 
             // Searching for gravity fields with the correct priority.
-            for(int i = 0; i < globalFields.Count; i++)
-                if(globalFields[i]._priority == targetPriority) {
+            for (int i = 0; i < globalFields.Count; i++)
+                if (globalFields[i]._priority == targetPriority) {
 
                     // Adding the field gravity to the total gravity value.
                     globalGravity += globalFields[i].GetFieldGravity(rigidbody.position);
@@ -195,15 +199,15 @@ namespace AdvancedGravity.Internal
             // The combined local gravity values.
             Vector3 globalGravity = Vector3.zero;
 
-            for(int i = 0; i < globalFields.Count; i++)
-                if(globalFields[i]._priority >= currentPriority) {
+            for (int i = 0; i < globalFields.Count; i++)
+                if (globalFields[i]._priority >= currentPriority) {
 
                     // Adding gravity to the current calculation.
                     Vector3 fieldGravity = globalFields[i].GetFieldGravity(position);
                     globalGravity += fieldGravity;
 
                     // If the field has a higher priority all previous values should be ignored.
-                    if(fieldGravity != Vector3.zero && 
+                    if (fieldGravity != Vector3.zero &&
                         globalFields[i]._priority > currentPriority) {
 
                         currentPriority = globalFields[i]._priority;
@@ -213,9 +217,9 @@ namespace AdvancedGravity.Internal
 
             return globalGravity;
         }
-#endregion
+        #endregion
 
-#region Private Functions
+        #region Private Functions
         /// <summary>
         /// Finds the highest priority at the rigidbody's position.
         /// </summary>
@@ -237,6 +241,6 @@ namespace AdvancedGravity.Internal
 
             return currentPriority;
         }
-#endregion
+        #endregion
     }
 }
