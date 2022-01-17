@@ -32,4 +32,4 @@ The save file for these settings are located in the project settings folder of y
 
 ## Creating a Custom Gravity Field:
 
-For a guide on creating a custom gravity field using this package as well as a custom inspector for it, please see the EXTENSION.md.
+For a guide on creating a custom gravity field using this package as well as a custom inspector for it, please see the [EXTENSION.md](https://github.com/Explosive-James/Unity-Advanced-Gravity/blob/main/EXTENSION.md).
