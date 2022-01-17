@@ -78,14 +78,13 @@ namespace AdvancedGravity.Internal
             // Caching rigidbody reference.
             Rigidbody targetRb = other.attachedRigidbody;
 
-            // If the rigidbody is null or not using gravity we cannot do anything.
-            if (targetRb == null || !targetRb.useGravity) {
-                return;
-            }
-
             // Adding a rigidbody to the priorities.
             if (targetRb != null && !globalPriorities.ContainsKey(targetRb)) {
                 globalPriorities.Add(targetRb, _priority);
+            }
+            // If the rigidbody is null or not using gravity we cannot do anything.
+            if (targetRb == null || !targetRb.useGravity) {
+                return;
             }
 
             // Caching rigidbody priority.
