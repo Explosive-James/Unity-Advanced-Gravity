@@ -47,10 +47,11 @@ Displaying the gravity field is done using **Gizmos** inside of the **OnDrawGizm
 ## Creating Custom Gravity Inspector:
 
 To create a custom inspector for your gravity field you'll need an **Editor** folder in your project, these are special folders in Unity that create an editor onl assembly that won't be built.  
-Inside this folder you'll want to create a new script and make sure to include the **UnityEditor** and **AdvancedGravity.UnityEditor.Inspectors** namespaces, inherit from **Editor** and give it the **CustomEditor** attribute:  
+Inside this folder you'll want to create a new script and make sure to include the **UnityEditor**, **AdvancedGravity** and **AdvancedGravityEditor.Inspectors** namespaces, inherit from **Editor** and give it the **CustomEditor** attribute:  
 
 	using UnityEditor;
-	using AdvancedGravity.UnityEditor.Inspectors;
+	using AdvancedGravity;
+	using AdvancedGravityEditor.Inspectors;
 
 	[CustomEditor(typeof(CustomGravity))]
 	class CustomGravityInspector : Editor

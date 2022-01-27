@@ -5,7 +5,7 @@ using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace AdvancedGravity.UnityEditor.Settings
+namespace AdvancedGravityEditor.Settings
 {
     internal class GravityBuilder : IProcessSceneWithReport
     {

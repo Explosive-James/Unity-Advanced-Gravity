@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace AdvancedGravity.UnityEditor.Settings
+namespace AdvancedGravityEditor.Settings
 {
     internal static class GravityProvider
     {

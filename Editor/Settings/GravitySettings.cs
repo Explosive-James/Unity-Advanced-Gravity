@@ -2,7 +2,7 @@
 using System.IO;
 using System;
 
-namespace AdvancedGravity.UnityEditor.Settings
+namespace AdvancedGravityEditor.Settings
 {
     internal class GravitySettings : ScriptableObject
     {

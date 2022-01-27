@@ -1,7 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using AdvancedGravity;
 
-namespace AdvancedGravity.UnityEditor.Inspectors
+namespace AdvancedGravityEditor.Inspectors
 {
     [CustomEditor(typeof(CylindricalGravity))]
     public class CylindricalInspector : Editor

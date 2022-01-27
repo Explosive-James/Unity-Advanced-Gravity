@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using AdvancedGravity;
 
-namespace AdvancedGravity.UnityEditor.Inspectors
+namespace AdvancedGravityEditor.Inspectors
 {
     [CustomEditor(typeof(CapsuleGravity))]
     public class CapsuleInspector : Editor

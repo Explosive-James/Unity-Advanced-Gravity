@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
+using AdvancedGravity;
 
-namespace AdvancedGravity.UnityEditor.Inspectors
+namespace AdvancedGravityEditor.Inspectors
 {
     [CustomEditor(typeof(SphericalGravity))]
     public class SphericalInspector : Editor

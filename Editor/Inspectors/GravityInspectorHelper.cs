@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using AdvancedGravity.UnityEditor.Settings;
+using AdvancedGravityEditor.Settings;
+using AdvancedGravity;
 
-namespace AdvancedGravity.UnityEditor.Inspectors
+namespace AdvancedGravityEditor.Inspectors
 {
     public static class GravityInspectorHelper
     {
