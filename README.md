@@ -23,7 +23,9 @@ You should note that these files won't be moved into your project directory and 
 
 #### Adding a Gravity Field to a Scene:  
 
-To add a new gravity field, you simply need to add a script to an gameObject, ideally an empty gameObject or one without a collider, and adjust the settings in the inspector. The included gravity fields are named: "Spherical Gravity", "Cublic Gravity", "Planar Gravity", "Cylindrical Gravity" and "Capsule Gravity", all can be found by simply searching for the workd "gravity".
+To add a new gravity field, you simply need to add a script to an gameObject, ideally an empty gameObject or one without a collider, and adjust the settings in the inspector. The included gravity fields are named: "Spherical Gravity", "Cublic Gravity", "Planar Gravity", "Cylindrical Gravity" and "Capsule Gravity", all can be found by simply searching for the workd "gravity".  
+  
+*Note: The global gravity will still eb applied to rigidbodies inside of gravity fields, if you want the gravity fields to be the only influence to a rigidbody you need to change the gravity settings in the project settings.*
 
 #### Adjusting Preset Values:
 
