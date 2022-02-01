@@ -21,7 +21,7 @@ namespace AdvancedGravity
 
             // Adjusting collider settings.
             collider.isTrigger = true;
-            collider.size = _aspectRatio * _maximumRange * 2;
+            collider.size = _maximumRange * 2 * _aspectRatio;
         }
 #if UNITY_EDITOR
         private void OnDrawGizmos()
@@ -34,16 +34,16 @@ namespace AdvancedGravity
             Gizmos.color = gizmosColour;
 
             // Drawing range where gravity is at max.
-            Gizmos.DrawWireCube(Vector3.zero, _aspectRatio * (_maximumRange - _maximumFade) * 2);
-            Gizmos.DrawWireCube(Vector3.zero, _aspectRatio * (_minimumRange + _minimumFade) * 2);
+            Gizmos.DrawWireCube(Vector3.zero, (_maximumRange - _maximumFade) * 2 * _aspectRatio);
+            Gizmos.DrawWireCube(Vector3.zero, (_minimumRange + _minimumFade) * 2 * _aspectRatio);
 
             // Adjusting gizmos colour.
             gizmosColour.a = gizmosAlpha;
             Gizmos.color = gizmosColour;
 
             // Drawing range where gravity is at zero.
-            Gizmos.DrawWireCube(Vector3.zero, _aspectRatio * _maximumRange * 2);
-            Gizmos.DrawWireCube(Vector3.zero, _aspectRatio * _minimumRange * 2);
+            Gizmos.DrawWireCube(Vector3.zero, _maximumRange * 2 * _aspectRatio);
+            Gizmos.DrawWireCube(Vector3.zero, _minimumRange * 2 * _aspectRatio);
 
             // Calculating the minimum and maximum values.
             Vector3 minimum = Vector3.Scale(_aspectRatio, Vector3.one * _minimumRange);

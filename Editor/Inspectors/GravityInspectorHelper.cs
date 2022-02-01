@@ -96,7 +96,7 @@ namespace AdvancedGravityEditor.Inspectors
             // Finding the maximum fade property inside gravity field.
             SerializedProperty maximumFadeProperty = gravityField.FindProperty("_maximumFade");
             // Initialising the maximum fade inspector content.
-            GUIContent maximumFadeContent = new GUIContent("Range", "The transition from maximum gravity and zero from the maximum range.");
+            GUIContent maximumFadeContent = new GUIContent("Fade Distance", "The transition from maximum gravity and zero from the maximum range.");
 
             // Drawing maximum fade inspector gui.
             float minimumRangeValue = gravityField.FindProperty("_minimumRange").floatValue;
@@ -126,7 +126,7 @@ namespace AdvancedGravityEditor.Inspectors
             // Finding the minimum fade property inside gravity field.
             SerializedProperty minimumFadeProperty = gravityField.FindProperty("_minimumFade");
             // Initialising the minimum fade inspector content.
-            GUIContent minimumFadeContent = new GUIContent("Range", "The transition from maximum gravity and zero from the minimum range.");
+            GUIContent minimumFadeContent = new GUIContent("Fade Distance", "The transition from maximum gravity and zero from the minimum range.");
 
             // Drawing minimum fade inspector gui.
             float maximumRangeValue = gravityField.FindProperty("_maximumRange").floatValue;

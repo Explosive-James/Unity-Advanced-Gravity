@@ -71,6 +71,22 @@ namespace AdvancedGravity.Internal
             Gizmos.DrawLine(position + (rotation * new Vector3(0, halfLength, -radius)), position + (rotation * new Vector3(0, -halfLength, -radius)));
 #endif
         }
+        public static void DrawWireDonut(Vector3 position, Quaternion rotation, float radius, float thickness)
+        {
+#if UNITY_EDITOR
+            // Drawing donut radius.
+            DrawWireArc(position, rotation, radius + thickness, 360);
+            DrawWireArc(position, rotation, radius - thickness, 360);
+            DrawWireArc(position + new Vector3(0, thickness, 0), rotation, radius, 360);
+            DrawWireArc(position - new Vector3(0, thickness, 0), rotation, radius, 360);
+
+            // Drawing donut rings.
+            DrawWireArc(position + new Vector3(radius, 0, 0), Quaternion.Euler(90, 0, 0), thickness, 360);
+            DrawWireArc(position + new Vector3(-radius, 0, 0), Quaternion.Euler(90, 0, 0), thickness, 360);
+            DrawWireArc(position + new Vector3(0, 0, radius), Quaternion.Euler(90, 90, 0), thickness, 360);
+            DrawWireArc(position + new Vector3(0, 0, -radius), Quaternion.Euler(90, 90, 0), thickness, 360);
+#endif
+        }
         #endregion
     }
 }

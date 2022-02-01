@@ -57,7 +57,7 @@ namespace AdvancedGravity
             // How far the position is from the center.
             float localDistance = localPosition.magnitude / maxAxis;
 
-            return localPosition.normalized * CalculateFadeMultiplier(localDistance) * -_strength;
+            return -_strength * CalculateFadeMultiplier(localDistance) * localPosition.normalized;
         }
         #endregion
     }

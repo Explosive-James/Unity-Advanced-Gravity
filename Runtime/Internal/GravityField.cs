@@ -146,6 +146,9 @@ namespace AdvancedGravity.Internal
             float maximumFactor = Mathf.Clamp01(-(distance - _maximumRange) / _maximumFade);
             float minimumFactor = Mathf.Clamp01((distance - _minimumRange) / _minimumFade);
 
+            if (float.IsNaN(maximumFactor)) return minimumFactor;
+            if (float.IsNaN(minimumFactor)) return maximumFactor;
+
             return maximumFactor * minimumFactor;
         }
         protected Color GetGameObjectColour()

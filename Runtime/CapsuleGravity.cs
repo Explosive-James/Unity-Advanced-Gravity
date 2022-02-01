@@ -10,7 +10,7 @@ namespace AdvancedGravity
         #endregion
 
         #region Properties
-        public float Length => 5;
+        public float Length => _length;
         #endregion
 
         #region Unity Functions

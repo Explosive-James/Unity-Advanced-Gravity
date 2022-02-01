@@ -36,7 +36,7 @@ public class GravityDebugger : MonoBehaviour
                         float length = velocity.magnitude / gravityField.Strength;
 
                         Gizmos.color = Color.Lerp(Color.red, Color.green, length);
-                        Gizmos.DrawLine(position, position + (velocity.normalized * length * displaySize));
+                        Gizmos.DrawLine(position, position + (displaySize * length * velocity.normalized));
                     }
         }
     }
