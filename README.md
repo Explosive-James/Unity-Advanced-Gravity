@@ -26,6 +26,11 @@ Download the zip under Code >> Downlod ZIP and extract the files, then inside of
 To add a new gravity field, you simply need to add a script to an gameObject, ideally an empty gameObject or one without a collider, and adjust the settings in the inspector. The included gravity fields are named: **Spherical Gravity**, **Cublic Gravity**, **Planar Gravity**, **Cylindrical Gravity**, **Capsule Gravity** and **Donut Gravity**, all can be found by simply searching for the word "gravity".<br>
 *Note: The global gravity will still be applied to rigidbodies inside of gravity fields, if you want the gravity fields to be the only influence to a rigidbody you need to change the gravity settings in the project settings.*
 
+#### Finding Gravity through a Script:
+
+To grab global gravity being applied at a position or to a rigidbody, you can access **AdvancedGravitty.Gravity** and use the **GetGlobalGravity** function that takes either a world position or a rigidbody.<br>
+To get local gravity from a specific gravity field, you can access the **GetFieldGravity** from a gravity field instance. However this does not consider overlapping priorities or other gravity fields.
+
 #### Adjusting Preset Values:
 
 To adjust a value you go inside the project settings under Edit >> Project Settings >> Advanced Gravity and adjust the values from there, you can adjust both the names and the strengths of the values as well as adding new values.<br>
