@@ -17,8 +17,7 @@ For the gravity field to function correctly it requires two things, the first is
 		collider.isTrigger = true;
 		collider.radius = MaximumRange;
 	}
-You should also take this opportunity to adjust the size of the collider, the most important variable to help with this is the **MaximumRange** property. 
-    
+You should also take this opportunity to adjust the size of the collider, the most important variable to help with this is the **MaximumRange** property.<br><br>
 The second requirement is the overriding the **GetFieldGravity** method, this is where both the direction and strength of your gravity field should be calculate. To help calculate the gravity fading effect you have access to the **CalculateFadeMultiplier** method that will take a float representing distance and compare them to the fade distances. This returns a value between 0 to 1 that you can multiply with the **Strength** property or **_strength** variable and direction:  
 	
 	public override Vector3 GetGravityField(Vector3 rigidbodyPosition) {
@@ -46,7 +45,7 @@ Displaying the gravity field is done using **Gizmos** inside of the **OnDrawGizm
 
 ## Creating Custom Gravity Inspector:
 
-To create a custom inspector for your gravity field you'll need an **Editor** folder in your project, these are special folders in Unity that create an editor onl assembly that won't be built.  
+To create a custom inspector for your gravity field you'll need an **Editor** folder in your project, these are special folders in Unity that create an editor onl assembly that won't be built.<br>
 Inside this folder you'll want to create a new script and make sure to include the **UnityEditor**, **AdvancedGravity** and **AdvancedGravityEditor.Inspectors** namespaces, inherit from **Editor** and give it the **CustomEditor** attribute:  
 
 	using UnityEditor;
