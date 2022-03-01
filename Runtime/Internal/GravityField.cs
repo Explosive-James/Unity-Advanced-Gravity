@@ -10,11 +10,11 @@ namespace AdvancedGravity.Internal
         /// <summary>
         /// Global list of gravity fields used to calculate global gravity.
         /// </summary>
-        private static List<GravityField> globalFields = new List<GravityField>();
+        internal static List<GravityField> globalFields = new List<GravityField>();
         /// <summary>
         /// Global list that dictates if a gravity field can influence a rigidbody.
         /// </summary>
-        private static Dictionary<Rigidbody, int> globalPriorities = new Dictionary<Rigidbody, int>();
+        internal static Dictionary<Rigidbody, int> globalPriorities = new Dictionary<Rigidbody, int>();
         #endregion
 
         #region Data
@@ -163,62 +163,18 @@ namespace AdvancedGravity.Internal
         #endregion
 
         #region Public Functions
+        [System.Obsolete("please use Gravity.GetGlobalGravity instead.")]
         /// <summary>
         /// Gets the current gravity being applied to a rigidbody. This considers the rigidbody's 'useGravity' property.
         /// </summary>
         /// <param name="rigidbody">Rigidbody to find the gravity of.</param>
-        public static Vector3 GetGlobalGravity(Rigidbody rigidbody)
-        {
-            // If the rigidbody has no priority it isn't in a gravity field,
-            // and if it doesn't use gravity it won't have any gravity applied.
-            if (!globalPriorities.ContainsKey(rigidbody) || !rigidbody.useGravity) {
-                return Vector3.zero;
-            }
-
-            // Caching the priority of the rigidbody to save repeated calls.
-            int targetPriority = globalPriorities[rigidbody];
-            // The combined local gravity values.
-            Vector3 globalGravity = Vector3.zero;
-
-            // Searching for gravity fields with the correct priority.
-            for (int i = 0; i < globalFields.Count; i++)
-                if (globalFields[i]._priority == targetPriority) {
-
-                    // Adding the field gravity to the total gravity value.
-                    globalGravity += globalFields[i].GetFieldGravity(rigidbody.position);
-                }
-
-            return globalGravity;
-        }
+        public static Vector3 GetGlobalGravity(Rigidbody rigidbody) => Gravity.GetGlobalGravity(rigidbody);
+        [System.Obsolete("please use Gravity.GetGlobalGravity instead.")]
         /// <summary>
         /// Gets the gravity at a given position.
         /// </summary>
         /// <param name="position">Position to check the gravity at.</param>
-        public static Vector3 GetGlobalGravity(Vector3 position)
-        {
-            // Used to track the highest prioty field at the position.
-            int currentPriority = int.MinValue;
-            // The combined local gravity values.
-            Vector3 globalGravity = Vector3.zero;
-
-            for (int i = 0; i < globalFields.Count; i++)
-                if (globalFields[i]._priority >= currentPriority) {
-
-                    // Adding gravity to the current calculation.
-                    Vector3 fieldGravity = globalFields[i].GetFieldGravity(position);
-                    globalGravity += fieldGravity;
-
-                    // If the field has a higher priority all previous values should be ignored.
-                    if (fieldGravity != Vector3.zero &&
-                        globalFields[i]._priority > currentPriority) {
-
-                        currentPriority = globalFields[i]._priority;
-                        globalGravity = fieldGravity;
-                    }
-                }
-
-            return globalGravity;
-        }
+        public static Vector3 GetGlobalGravity(Vector3 position) => Gravity.GetGlobalGravity(position);
         #endregion
 
         #region Private Functions
